@@ -1,7 +1,7 @@
 FROM gcc:14-bookworm AS build
 WORKDIR /src
 COPY main.cpp .
-RUN g++ -std=c++17 -O2 -pthread main.cpp -o railflow
+RUN g++ -std=c++17 -O2 -pthread -static-libstdc++ -static-libgcc main.cpp -o railflow
 
 FROM debian:bookworm-slim
 COPY --from=build /src/railflow /usr/local/bin/railflow
