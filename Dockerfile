@@ -1,4 +1,4 @@
-FROM gcc:14 AS build
+FROM gcc:14-bookworm AS build
 WORKDIR /src
 COPY main.cpp .
 RUN g++ -std=c++17 -O2 -pthread main.cpp -o railflow
